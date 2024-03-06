@@ -4,7 +4,8 @@ const getComputerChoice = () => {
     return choices[index];
 }
 
-function playRound(playerSelection, computerSelection) {
+function playRound(playerSelection) {
+    computerSelection = getComputerChoice();
     const playerIndex = choices.indexOf(playerSelection);
     const computerIndex = choices.indexOf(computerSelection);
     const lose = `You lose! ${computerSelection[0].toUpperCase() + computerSelection.slice(1)} beats ${playerSelection}.`
@@ -16,27 +17,18 @@ function playRound(playerSelection, computerSelection) {
     }
     return lose;
   }
-  
-function playGame() {
-  let playerSelection = "rock";
-  let computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
-  playerSelection = "paper";
-  computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
-  playerSelection = "scissors";
-  computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
-  playerSelection = "rock";
-  computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
-  playerSelection = "paper";
-  computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
-  playerSelection = "scissors";
-  computerSelection = getComputerChoice();
-  console.log(playRound(playerSelection, computerSelection));
-}
 
-playGame();
+const rock = document.getElementById("rock");
+const paper = document.getElementById("paper");
+const scissors = document.getElementById("scissors");
+const message = document.getElementById("message");
+rock.addEventListener('click', () => {
+  message.innerHTML = playRound("rock");
+});
+paper.addEventListener('click', () => {
+  message.innerHTML = playRound("paper");
+});
+scissors.addEventListener('click', () => {
+  message.innerHTML = playRound("scissors");
+});
   
